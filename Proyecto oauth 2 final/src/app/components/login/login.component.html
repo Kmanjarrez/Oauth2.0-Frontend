@@ -1,0 +1,113 @@
+
+<!-- Botón para iniciar sesión con Google -->
+<div class="container">
+ <h1 class="titulo">INICIA SESIÓN</h1>
+  <!-- El botón de Google será renderizado aquí -->
+<div id="googleSignInButton" class="google-button-container"></div>
+  <!-- Mostrar los datos del usuario después del login -->
+<div *ngIf="authService.user$ | async as user">
+    <h3> Bienvenido, {{user.name}}! </h3>  <!-- Muestra el nombre del usuario -->
+    <pre >{{ user | json }}</pre>  <!-- Muestra todos los datos del usuario en formato JSON -->
+  </div>
+   <!-- Botón para cerrar sesión (opcional) -->
+   <button (click)="logout()" class="logout-button">Cerrar sesión</button>
+</div>
+  
+ 
+  <style>
+    .datosu{
+position: fixed; /* Fija la posición de este elemento en la pantalla */
+  top: 20px;       /* Ubicación desde el borde superior */
+  left: 20px;      /* Ubicación desde el borde izquierdo */
+  font-size: 1.2em;
+  color: #333;
+  font-family: Arial, sans-serif;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo para mejorar la visibilidad */
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil para un efecto más bonito */
+  z-index: 1000;   /* Asegura que este elemento esté por encima de otros */
+    }
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  gap: 20px;
+  background: linear-gradient(to right, #e0f7fa, #fff3e0); /* Fondo degradado suave */
+}
+
+/* Estilos para el título */
+.titulo {
+  font-size: 2.5em;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+.titulo:hover {
+  transform: scale(1.05); /* Efecto de escala en el título */
+}
+
+/* Estilo para el botón de Google */
+.google-button-container {
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #4285F4;
+  border-radius: 8px;
+  background-color: #4285F4;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.google-button-container:hover {
+  background-color: #357ae8;
+  box-shadow: 0px 5px 15px rgba(53, 122, 232, 0.3); /* Sombra en hover */
+  transform: translateY(-3px); /* Levanta el botón */
+}
+
+.google-button-container:active {
+  transform: translateY(1px); /* Efecto al presionar el botón */
+}
+
+/* Estilo para el botón de cerrar sesión */
+.logout-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #555;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra en hover */
+  transform: translateY(-3px); /* Levanta el botón */
+}
+
+.logout-button:active {
+  transform: translateY(1px); /* Efecto al presionar */
+}
+
+
+  </style>
+  <p>
+
+  </p>
+
+
+
+
